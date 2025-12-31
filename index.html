@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy New Year Kitty 🎆</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+  height:100vh;
+  overflow:hidden;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+}
+
+.container{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+h1{
+  font-size:3rem;
+  margin-bottom:10px;
+}
+
+h2{
+  font-size:1.5rem;
+  margin-bottom:20px;
+  color:#ffd6e8;
+}
+
+.card{
+  background: rgba(255,255,255,0.12);
+  padding:25px;
+  border-radius:18px;
+  max-width:500px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(255,192,203,0.3);
+}
+
+.card p{
+  font-size:1.05rem;
+  line-height:1.6;
+  margin-bottom:15px;
+}
+
+.signature{
+  margin-top:15px;
+  font-weight:600;
+  color:#ffb6c1;
+}
+
+button{
+  margin-top:25px;
+  padding:12px 30px;
+  border:none;
+  border-radius:25px;
+  font-size:1rem;
+  background:linear-gradient(45deg,#ff5f9e,#ffc371);
+  color:#000;
+  cursor:pointer;
+  box-shadow:0 0 15px rgba(255,255,255,0.4);
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+/* Fireworks */
+.firework{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:white;
+  border-radius:50%;
+  animation: explode 1.5s ease-out forwards;
+}
+
+@keyframes explode{
+  from{
+    transform:translate(0,0);
+    opacity:1;
+  }
+  to{
+    transform:translate(var(--x),var(--y));
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>🎉 Happy New Year Kitty 🎉</h1>
+  <h2>May this year be gentle, strong & beautiful — just like you</h2>
+
+  <div class="card">
+    <p>
+      Dear Kitty,<br><br>
+      This new year, I just wanted to remind you of one simple thing —
+      you don’t need to rush anything.  
+    </p>
+
+    <p>
+      I know you’re preparing for your CA exams in May, and I truly respect
+      your focus, discipline, and dreams. 🌸  
+      I’ll always support you — silently if needed, proudly always.
+    </p>
+
+    <p>
+      Thank you for being honest with me and for asking for time.
+      Whatever you decide, I’m grateful to have you in my life.
+    </p>
+
+    <p>
+      May 2025 bring you confidence, success, peace,
+      and lots of reasons to smile ✨
+    </p>
+
+    <div class="signature">
+      — Yours, Om 💫
+    </div>
+  </div>
+
+  <button onclick="startCelebration()">Tap for Celebration 🎆</button>
+</div>
+
+<!-- Celebration Sound -->
+<audio id="sound" preload="auto">
+  <source src="https://www.soundjay.com/misc/sounds/fireworks-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function startCelebration(){
+  document.getElementById("sound").play();
+
+  for(let i=0;i<120;i++){
+    createFirework();
+  }
+}
+
+function createFirework(){
+  const firework = document.createElement("div");
+  firework.classList.add("firework");
+
+  firework.style.left = Math.random()*window.innerWidth + "px";
+  firework.style.top = Math.random()*window.innerHeight + "px";
+
+  firework.style.setProperty('--x', (Math.random()*400 - 200) + 'px');
+  firework.style.setProperty('--y', (Math.random()*400 - 200) + 'px');
+
+  firework.style.background =
+    `hsl(${Math.random()*360},100%,70%)`;
+
+  document.body.appendChild(firework);
+
+  setTimeout(()=>{
+    firework.remove();
+  },1500);
+}
+</script>
+
+</body>
+</html>
