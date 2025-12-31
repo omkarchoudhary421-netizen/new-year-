@@ -41,4 +41,148 @@ h1{
 
 h2{
   font-size:1.4rem;
-  margin-bottom:
+  margin-bottom:20px;
+  color:#ffd6e8;
+}
+
+.card{
+  background: rgba(255,255,255,0.12);
+  padding:25px;
+  border-radius:18px;
+  max-width:520px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(255,192,203,0.25);
+}
+
+.card p{
+  font-size:1.05rem;
+  line-height:1.6;
+  margin-bottom:14px;
+}
+
+.meme{
+  font-size:0.95rem;
+  background: rgba(0,0,0,0.4);
+  padding:12px;
+  border-radius:12px;
+  margin:15px 0;
+  color:#ffe6f0;
+}
+
+.signature{
+  margin-top:15px;
+  font-weight:600;
+  color:#ffb6c1;
+}
+
+button{
+  margin-top:25px;
+  padding:12px 30px;
+  border:none;
+  border-radius:25px;
+  font-size:1rem;
+  background:linear-gradient(45deg,#ff5f9e,#ffc371);
+  color:#000;
+  cursor:pointer;
+  box-shadow:0 0 15px rgba(255,255,255,0.4);
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+/* Fireworks */
+.firework{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:white;
+  border-radius:50%;
+  animation: explode 1.5s ease-out forwards;
+}
+
+@keyframes explode{
+  from{
+    transform:translate(0,0);
+    opacity:1;
+  }
+  to{
+    transform:translate(var(--x),var(--y));
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>🎆 Happy New Year Kitty 🎆</h1>
+  <h2>New year, new chapters, same smart you 😉</h2>
+
+  <div class="card">
+    <p>
+      Hey Kitty,<br><br>
+      Just a small New Year wish for the girl who balances
+      life, logic, and ledger accounts like a pro 😌
+    </p>
+
+    <div class="meme">
+      📊 Commerce Meme:<br>
+      Assets increase happiness,<br>
+      Liabilities increase stress,<br>
+      And CA students? — depreciate sleep daily 😭📚
+    </div>
+
+    <p>
+      May this year credit you with confidence,
+      debit your stress,
+      and balance everything perfectly ✨
+    </p>
+
+    <p>
+      Also… don’t forget to smile sometimes —
+      it suits you more than calculator buttons 😄
+    </p>
+
+    <div class="signature">
+      — From Om 💫
+    </div>
+  </div>
+
+  <button onclick="startCelebration()">Tap for New Year Vibes 🎉</button>
+</div>
+
+<audio id="sound" preload="auto">
+  <source src="https://www.soundjay.com/misc/sounds/fireworks-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function startCelebration(){
+  document.getElementById("sound").play();
+  for(let i=0;i<130;i++){
+    createFirework();
+  }
+}
+
+function createFirework(){
+  const f = document.createElement("div");
+  f.classList.add("firework");
+
+  f.style.left = Math.random()*window.innerWidth + "px";
+  f.style.top = Math.random()*window.innerHeight + "px";
+
+  f.style.setProperty('--x',(Math.random()*400-200)+'px');
+  f.style.setProperty('--y',(Math.random()*400-200)+'px');
+
+  f.style.background =
+    `hsl(${Math.random()*360},100%,70%)`;
+
+  document.body.appendChild(f);
+
+  setTimeout(()=>f.remove(),1500);
+}
+</script>
+
+</body>
+</html>
